@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página Web</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: black url('fondo.jpg') no-repeat center center fixed;
+            background-size: 70%;
+            overflow-x: hidden;
+        }
+
+        .purple-bar {
+            background-color: #800080;
+            width: 100%;
+            height: 10vh;
+            position: fixed;
+            bottom: 0;
+            z-index: 1;
+        }
+
+        .purple-bar img {
+            max-width: 15%;
+            height: auto;
+            border-radius: 10px;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Elimina los espacios y el texto dentro de la franja púrpura */
+        .purple-bar a {
+            text-decoration: none;
+            color: transparent;
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .title-container {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            color: white;
+            font-family: 'Pacifico', cursive;
+            font-size: 1.5em;
+        }
+
+        /* Estilo para las imágenes */
+        .images-container {
+            text-align: center;
+            margin-top: 200px; /* Ajustado para dejar más espacio entre el título y las miniaturas */
+        }
+
+        .image-container {
+            display: inline-block;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .image-container img {
+            width: 100%;
+            max-width: 150px; /* Ajusta el tamaño máximo de las miniaturas */
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .image-container img:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="purple-bar">
+        <a href="#"></a>
+        <img src="logo.png" alt="Logo">
+    </div>
+
+    <div class="title-container">
+        Fotoensayo
+    </div>
+
+    <!-- Agregar las imágenes aquí -->
+    <div class="images-container">
+        <div class="image-container" onclick="expandImage('imagen1.jpg', 'Esta es una iglesia muy cerca del arbol pero mas cerca del centro de toluca muy tradicional')">
+            <img src="imagen1.jpg" alt="Imagen 1">
+        </div>
+        <!-- Repetir para las demás imágenes -->
+        <div class="image-container" onclick="expandImage('imagen2.jpg', 'Descripción de la imagen 2')">
+            <img src="imagen2.jpg" alt="Imagen 2">
+        </div>
+        <!-- Repetir para las demás imágenes -->
+        <div class="image-container" onclick="expandImage('imagen3.jpg', 'Descripción de la imagen 3')">
+            <img src="imagen3.jpg" alt="Imagen 3">
+        </div>
+        <div class="image-container" onclick="expandImage('imagen4.jpg', 'Descripción de la imagen 4')">
+            <img src="imagen4.jpg" alt="Imagen 4">
+        </div>
+        <div class="image-container" onclick="expandImage('imagen5.jpg', 'Descripción de la imagen 5')">
+            <img src="imagen5.jpg" alt="Imagen 5">
+        </div>
+        <div class="image-container" onclick="expandImage('imagen6.jpg', 'Descripción de la imagen 6')">
+            <img src="imagen6.jpg" alt="Imagen 6">
+        </div>
+        <div class="image-container" onclick="expandImage('imagen7.jpg', 'Descripción de la imagen 7')">
+            <img src="imagen7.jpg" alt="Imagen 7">
+        </div>
+        <div class="image-container" onclick="expandImage('imagen8.jpg', 'Descripción de la imagen 8')">
+            <img src="imagen8.jpg" alt="Imagen 8">
+        </div>
+        <div class="image-container" onclick="expandImage('imagen9.jpg', 'Descripción de la imagen 9')">
+            <img src="imagen9.jpg" alt="Imagen 9">
+        </div>
+        <div class="image-container" onclick="expandImage('imagen10.jpg', 'Descripción de la imagen 10')">
+            <img src="imagen10.jpg" alt="Imagen 10">
+        </div>
+        <div class="image-container" onclick="expandImage('imagen11.jpg', 'Descripción de la imagen 11')">
+            <img src="imagen11.jpg" alt="Imagen 11">
+        </div>
+        <div class="image-container" onclick="expandImage('imagen12.jpg', 'Descripción de la imagen 12')">
+            <img src="imagen12.jpg" alt="Imagen 12">
+        </div>
+    </div>
+
+    <!-- Script para la expansión de imágenes -->
+    <script>
+        function expandImage(imageSrc, description) {
+            // Crea la vista expandida
+            var expandedView = document.createElement('div');
+            expandedView.style.position = 'fixed';
+            expandedView.style.top = '0';
+            expandedView.style.left = '0';
+            expandedView.style.width = '100%';
+            expandedView.style.height = '100%';
+            expandedView.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+            expandedView.style.display = 'flex';
+            expandedView.style.alignItems = 'center';
+            expandedView.style.justifyContent = 'center';
+
+            // Crea una imagen para la vista expandida
+            var expandedImage = document.createElement('img');
+            expandedImage.src = imageSrc;
+            expandedImage.style.maxWidth = '80%';
+            expandedImage.style.maxHeight = '80%';
+
+            // Crea un párrafo para la descripción
+            var descriptionText = document.createElement('p');
+            descriptionText.textContent = description;
+            descriptionText.style.color = '#fff';
+            descriptionText.style.textAlign = 'center';
+
+            // Agrega la imagen y el texto a la vista expandida
+            expandedView.appendChild(expandedImage);
+            expandedView.appendChild(descriptionText);
+
+            // Agrega la vista expandida al cuerpo del documento
+            document.body.appendChild(expandedView);
+
+            // Agrega un evento para cerrar la vista expandida al hacer clic en ella
+            expandedView.addEventListener('click', function () {
+                document.body.removeChild(expandedView);
+            });
+        }
+    </script>
+</body>
+</html>
+
+
