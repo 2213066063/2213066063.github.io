@@ -6,25 +6,24 @@
     <title>Mi Página Web</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
-    <!-- Corregido el nombre del archivo JavaScript -->
     <script src="js/script.js"></script>
 </head>
 <body>
 
-    <div id="header" onclick="cambiarColorFondoHeader()">
+    <div id="header">
         <div class="header-overlay"></div>
         <h1>El Emblemático Árbol de las Manitas Toluca</h1>
     </div>
 
     <div id="gallery">
         <!-- Agrega tus imágenes con enlaces aquí -->
-        <div class="image-container" onmouseover="mostrarAlertaEnImagen()">
+        <div class="image-container">
             <a href="Link/links.html">
                 <img class="icon" src="icono1.png" alt="Icono 1">
                 <div class="image-description">Links</div>
             </a>
         </div>
-        <div class="image-container" onmouseover="mostrarAlertaEnImagen()">
+        <div class="image-container">
             <a href="Foto/foto-ensayo.html">
                 <img class="icon" src="icono2.png" alt="Icono 2">
                 <div class="image-description">Fotoensayo</div>
@@ -33,14 +32,19 @@
         <!-- Agrega más imágenes según sea necesario -->
     </div>
 
-    <a class="page-sign" href="Sobre/sobre-la-pagina.html">Sobre la página</a>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const body = document.body;
+            body.classList.add('show');
 
-    <div class="purple-bar" onscroll="cambiarColorFondoBarraMorada()">
-        <img src="logo.png" alt="Logo">
-    </div>
-
+            // Reproducir audio al hacer clic en cualquier parte de la página
+            document.body.addEventListener('click', function () {
+                var audio = new Audio('ranas.mp3');
+                audio.play();
+                // Solo se activará una vez, puedes ajustar según sea necesario.
+                document.body.removeEventListener('click', arguments.callee);
+            });
+        });
+    </script>
 </body>
 </html>
-
-
-

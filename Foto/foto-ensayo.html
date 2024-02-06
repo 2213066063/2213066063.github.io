@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,37 +10,20 @@
         body {
             margin: 0;
             padding: 0;
-            background: black url('fondo.jpg') no-repeat center center fixed;
+            background: black url('fondo.jpg') center no-repeat fixed;
             background-size: 70%;
             overflow-x: hidden;
+            animation: fadeIn 6s ease;
         }
 
-        .purple-bar {
-            background-color: #800080;
-            width: 100%;
-            height: 10vh;
-            position: fixed;
-            bottom: 0;
-            z-index: 1;
-        }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
 
-        .purple-bar img {
-            max-width: 15%;
-            height: auto;
-            border-radius: 10px;
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        /* Elimina los espacios y el texto dentro de la franja púrpura */
-        .purple-bar a {
-            text-decoration: none;
-            color: transparent;
-            display: block;
-            width: 100%;
-            height: 100%;
+            100% {
+                opacity: 1;
+            }
         }
 
         .title-container {
@@ -55,90 +39,181 @@
             color: white;
             font-family: 'Pacifico', cursive;
             font-size: 1.5em;
+            opacity: 0;
+            transition: opacity 3s ease;
         }
 
-        /* Estilo para las imágenes */
         .images-container {
             text-align: center;
-            margin-top: 200px; /* Ajustado para dejar más espacio entre el título y las miniaturas */
+            margin-top: 200px;
+            opacity: 0;
+            transition: opacity 3s ease;
         }
 
         .image-container {
             display: inline-block;
             margin: 0 10px;
             cursor: pointer;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+            position: relative;
+        }
+
+        .image-container:hover {
+            opacity: 1;
         }
 
         .image-container img {
             width: 100%;
-            max-width: 150px; /* Ajusta el tamaño máximo de las miniaturas */
+            max-width: 150px;
             height: auto;
             border-radius: 10px;
             transition: transform 0.3s ease-in-out;
         }
 
-        .image-container img:hover {
-            transform: scale(1.2);
+        .image-description {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            border: 2px solid #fff;
+            border-radius: 15px;
+            box-sizing: border-box;
+        }
+
+        .zoomed {
+            max-width: 100% !important;
+            max-height: 100% !important;
+            transition: transform 0.3s ease-in-out;
+            transform: scale(1.7);
+        }
+
+        .navigation-buttons {
+            position: absolute;
+            top: 50%;
+            right: -50px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .navigation-buttons button {
+            background-color: white;
+            color: black;
+            border: none;
+            padding: 8px 12px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            margin-bottom: 4px;
+            cursor: pointer;
+            border-radius: 5px;
         }
     </style>
 </head>
+
 <body>
 
-    <div class="purple-bar">
-        <a href="#"></a>
-        <img src="logo.png" alt="Logo">
-    </div>
-
-    <div class="title-container">
-        Fotoensayo
-    </div>
-
-    <!-- Agregar las imágenes aquí -->
-    <div class="images-container">
-        <div class="image-container" onclick="expandImage('imagen1.jpg', 'Esta es una iglesia muy cerca del arbol pero mas cerca del centro de toluca muy tradicional')">
+    <div class="title-container" id="titleContainer">Fotoensayo</div>
+    <div class="images-container" id="imagesContainer">
+        <!-- Imagen 1 -->
+        <div class="image-container" onclick="expandImage(0)">
             <img src="imagen1.jpg" alt="Imagen 1">
+            <div class="image-description">Esta es una iglesia muy cerca del árbol pero más cerca del centro de Toluca, muy tradicional</div>
         </div>
-        <!-- Repetir para las demás imágenes -->
-        <div class="image-container" onclick="expandImage('imagen2.jpg', 'Descripción de la imagen 2')">
+
+        <!-- Imagen 2 -->
+        <div class="image-container" onclick="expandImage(1)">
             <img src="imagen2.jpg" alt="Imagen 2">
+            <div class="image-description">Descripción de la imagen 2</div>
         </div>
-        <!-- Repetir para las demás imágenes -->
-        <div class="image-container" onclick="expandImage('imagen3.jpg', 'Descripción de la imagen 3')">
+
+        <!-- Imagen 3 -->
+        <div class="image-container" onclick="expandImage(2)">
             <img src="imagen3.jpg" alt="Imagen 3">
+            <div class="image-description">Descripción de la imagen 3</div>
         </div>
-        <div class="image-container" onclick="expandImage('imagen4.jpg', 'Descripción de la imagen 4')">
+
+        <!-- Imagen 4 -->
+        <div class="image-container" onclick="expandImage(3)">
             <img src="imagen4.jpg" alt="Imagen 4">
+            <div class="image-description">Descripción de la imagen 4</div>
         </div>
-        <div class="image-container" onclick="expandImage('imagen5.jpg', 'Descripción de la imagen 5')">
+
+        <!-- Imagen 5 -->
+        <div class="image-container" onclick="expandImage(4)">
             <img src="imagen5.jpg" alt="Imagen 5">
+            <div class="image-description">Descripción de la imagen 5</div>
         </div>
-        <div class="image-container" onclick="expandImage('imagen6.jpg', 'Descripción de la imagen 6')">
+
+        <!-- Imagen 6 -->
+        <div class="image-container" onclick="expandImage(5)">
             <img src="imagen6.jpg" alt="Imagen 6">
+            <div class="image-description">Descripción de la imagen 6</div>
         </div>
-        <div class="image-container" onclick="expandImage('imagen7.jpg', 'Descripción de la imagen 7')">
+
+        <!-- Imagen 7 -->
+        <div class="image-container" onclick="expandImage(6)">
             <img src="imagen7.jpg" alt="Imagen 7">
+            <div class="image-description">Descripción de la imagen 7</div>
         </div>
-        <div class="image-container" onclick="expandImage('imagen8.jpg', 'Descripción de la imagen 8')">
+
+        <!-- Imagen 8 -->
+        <div class="image-container" onclick="expandImage(7)">
             <img src="imagen8.jpg" alt="Imagen 8">
+            <div class="image-description">Descripción de la imagen 8</div>
         </div>
-        <div class="image-container" onclick="expandImage('imagen9.jpg', 'Descripción de la imagen 9')">
+
+        <!-- Imagen 9 -->
+        <div class="image-container" onclick="expandImage(8)">
             <img src="imagen9.jpg" alt="Imagen 9">
+            <div class="image-description">Descripción de la imagen 9</div>
         </div>
-        <div class="image-container" onclick="expandImage('imagen10.jpg', 'Descripción de la imagen 10')">
+
+        <!-- Imagen 10 -->
+        <div class="image-container" onclick="expandImage(9)">
             <img src="imagen10.jpg" alt="Imagen 10">
+            <div class="image-description">Descripción de la imagen 10</div>
         </div>
-        <div class="image-container" onclick="expandImage('imagen11.jpg', 'Descripción de la imagen 11')">
+
+        <!-- Imagen 11 -->
+        <div class="image-container" onclick="expandImage(10)">
             <img src="imagen11.jpg" alt="Imagen 11">
+            <div class="image-description">Descripción de la imagen 11</div>
         </div>
-        <div class="image-container" onclick="expandImage('imagen12.jpg', 'Descripción de la imagen 12')">
+
+        <!-- Imagen 12 -->
+        <div class="image-container" onclick="expandImage(11)">
             <img src="imagen12.jpg" alt="Imagen 12">
+            <div class="image-description">Descripción de la imagen 12</div>
         </div>
     </div>
 
-    <!-- Script para la expansión de imágenes -->
     <script>
-        function expandImage(imageSrc, description) {
-            // Crea la vista expandida
+        function expandImage(index) {
+            var images = [
+                { src: 'imagen1.jpg', description: 'Esta es una iglesia muy cerca del árbol pero más cerca del centro de Toluca, muy tradicional' },
+                { src: 'imagen2.jpg', description: 'hola esto es una prueba' },
+                { src: 'imagen3.jpg', description: 'Descripción de la imagen 3' },
+                { src: 'imagen4.jpg', description: 'Descripción de la imagen 4' },
+                { src: 'imagen5.jpg', description: 'Descripción de la imagen 5' },
+                { src: 'imagen6.jpg', description: 'Descripción de la imagen 6' },
+                { src: 'imagen7.jpg', description: 'Descripción de la imagen 7' },
+                { src: 'imagen8.jpg', description: 'Descripción de la imagen 8' },
+                { src: 'imagen9.jpg', description: 'Descripción de la imagen 9' },
+                { src: 'imagen10.jpg', description: 'Descripción de la imagen 10' },
+                { src: 'imagen11.jpg', description: 'Descripción de la imagen 11' },
+                { src: 'imagen12.jpg', description: 'Descripción de la imagen 12' },
+            ];
+
             var expandedView = document.createElement('div');
             expandedView.style.position = 'fixed';
             expandedView.style.top = '0';
@@ -147,35 +222,77 @@
             expandedView.style.height = '100%';
             expandedView.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
             expandedView.style.display = 'flex';
+            expandedView.style.flexDirection = 'column';
             expandedView.style.alignItems = 'center';
             expandedView.style.justifyContent = 'center';
 
-            // Crea una imagen para la vista expandida
-            var expandedImage = document.createElement('img');
-            expandedImage.src = imageSrc;
-            expandedImage.style.maxWidth = '80%';
-            expandedImage.style.maxHeight = '80%';
+            var expandedImageContainer = document.createElement('div');
+            expandedImageContainer.style.textAlign = 'center';
+            expandedImageContainer.style.position = 'relative';
 
-            // Crea un párrafo para la descripción
+            var expandedImage = document.createElement('img');
+            expandedImage.src = images[index].src;
+            expandedImage.style.width = '90%';
+            expandedImage.style.height = 'auto';
+
             var descriptionText = document.createElement('p');
-            descriptionText.textContent = description;
+            descriptionText.textContent = images[index].description;
             descriptionText.style.color = '#fff';
             descriptionText.style.textAlign = 'center';
+            descriptionText.style.fontSize = '0.8em';
 
-            // Agrega la imagen y el texto a la vista expandida
-            expandedView.appendChild(expandedImage);
-            expandedView.appendChild(descriptionText);
+            var navigationButtons = document.createElement('div');
+            navigationButtons.className = 'navigation-buttons';
 
-            // Agrega la vista expandida al cuerpo del documento
+            var prevButton = document.createElement('button');
+            prevButton.textContent = 'Anterior';
+            prevButton.addEventListener('click', function () {
+                var prevIndex = (index - 1 + images.length) % images.length;
+                expandImage(prevIndex);
+            });
+
+            var nextButton = document.createElement('button');
+            nextButton.textContent = 'Siguiente';
+            nextButton.addEventListener('click', function () {
+                var nextIndex = (index + 1) % images.length;
+                expandImage(nextIndex);
+            });
+
+            navigationButtons.appendChild(prevButton);
+            navigationButtons.appendChild(nextButton);
+
+            expandedImageContainer.appendChild(expandedImage);
+            expandedImageContainer.appendChild(descriptionText);
+            expandedImageContainer.appendChild(navigationButtons);
+
+            expandedView.appendChild(expandedImageContainer);
+
             document.body.appendChild(expandedView);
 
-            // Agrega un evento para cerrar la vista expandida al hacer clic en ella
             expandedView.addEventListener('click', function () {
                 document.body.removeChild(expandedView);
             });
         }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('titleContainer').style.opacity = 1;
+            document.getElementById('imagesContainer').style.opacity = 1;
+
+            var imageContainers = document.querySelectorAll('.image-container');
+            imageContainers.forEach(function (container, index) {
+                setTimeout(function () {
+                    container.style.opacity = 1;
+                }, 60 + index * 500);
+            });
+
+            document.body.addEventListener('click', function () {
+                var audio = new Audio('tormenta.mp3');
+                audio.play();
+                document.body.removeEventListener('click', arguments.callee);
+            });
+        });
     </script>
 </body>
-</html>
 
+</html>
 
