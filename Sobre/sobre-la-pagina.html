@@ -55,30 +55,48 @@
             font-size: 1.05em;
             color: #fff;
         }
+
+        .fade-in-delay {
+            opacity: 0;
+            animation: fadeInDelayAnimation 6s linear forwards;
+        }
+
+        @keyframes fadeInDelayAnimation {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
     </style>
+
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
+
 </head>
 <body>
 
-    <div class="purple-bar">
-        <a href="#"></a>
-        <img src="logo.png" alt="Logo">
-    </div>
+<div class="purple-bar">
+    <a href="#"></a>
+    <img src="logo.png" alt="Logo">
+</div>
 
-    <div class="text-container">
-        <!-- Agregado el título "Sobre la Página" -->
-        <h2 id="about-title">Sobre la Página</h2>
-        <p>
-            Bienvenido a nuestro espacio dedicado al "Árbol de las Manitas" de Toluca, un emblema valioso de la identidad mexiquense. Este sitio web es parte de un proyecto académico realizado en el marco de la licenciatura de Arte y Comunicación Digital de la Universidad Autónoma Metropolitana, Unidad - Lerma.
+<div class="text-container">
+    <!-- Agregado el título "Sobre la Página" -->
+    <h2 id="about-title">Sobre la Página</h2>
+    <p class="fade-in-delay">
+        Bienvenido a nuestro espacio dedicado al "Árbol de las Manitas" de Toluca, un emblema valioso de la identidad mexiquense. Este sitio web es parte de un proyecto académico realizado en el marco de la licenciatura de Arte y Comunicación Digital de la Universidad Autónoma Metropolitana, Unidad - Lerma.
 
-Queremos destacar que esta iniciativa no tiene fines de lucro. Nuestra intención es explorar de manera creativa y comunicativa el impacto que el arte digital puede tener en la representación de elementos culturales significativos.
+        Queremos destacar que esta iniciativa no tiene fines de lucro. Nuestra intención es explorar de manera creativa y comunicativa el impacto que el arte digital puede tener en la representación de elementos culturales significativos.
 
-Si tienes algún reclamo, corrección, o simplemente deseas ponerte en contacto con nosotros, no dudes en enviar un correo electrónico a la dirección 2213066063@correo.ler.uam.mx.
+        Si tienes algún reclamo, corrección, o simplemente deseas ponerte en contacto con nosotros, no dudes en enviar un correo electrónico a la dirección 2213066063@correo.ler.uam.mx.
 
-Agradecemos tu visita y esperamos que disfrutes de esta experiencia visual y narrativa dedicada al extraordinario "Árbol de las Manitas".
+        Agradecemos tu visita y esperamos que disfrutes de esta experiencia visual y narrativa dedicada al extraordinario "Árbol de las Manitas".
 
-¡Gracias por tu interés!
-        </p>
-    </div>
+        ¡Gracias por tu interés!
+    </p>
+</div>
 
 </body>
 </html>
