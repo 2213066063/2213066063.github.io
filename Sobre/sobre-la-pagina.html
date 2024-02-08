@@ -21,16 +21,15 @@
             position: fixed;
             bottom: 0;
             z-index: 1;
+            text-align: center; /* Para centrar el texto */
         }
 
-        .purple-bar img {
-            max-width: 15%;
-            height: auto;
-            border-radius: 10px;
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
+        .purple-bar-text {
+            color: black; /* Color del texto */
+            font-family: 'Arial', sans-serif;
+            font-size: 1.2em;
+            font-weight: bold; /* Texto en negritas */
+            line-height: 10vh; /* Para centrar verticalmente */
         }
 
         .text-container {
@@ -43,7 +42,7 @@
             border-radius: 10px;
             width: 80%;
             max-width: 600px;
-            text-align: justify; /* Añadida propiedad para justificar el texto */
+            text-align: justify;
             color: white;
             font-family: 'Arial', sans-serif;
             line-height: 1.5;
@@ -78,12 +77,10 @@
 <body>
 
 <div class="purple-bar">
-    <a href="#"></a>
-    <img src="logo.png" alt="Logo">
+    <span class="purple-bar-text">Universidad Autónoma Metropolitana Unidad Lerma</span>
 </div>
 
 <div class="text-container">
-    <!-- Agregado el título "Sobre la Página" -->
     <h2 id="about-title">Sobre la Página</h2>
     <p class="fade-in-delay">
         Bienvenido a nuestro espacio dedicado al "Árbol de las Manitas" de Toluca, un emblema valioso de la identidad mexiquense. Este sitio web es parte de un proyecto académico realizado en el marco de la licenciatura de Arte y Comunicación Digital de la Universidad Autónoma Metropolitana, Unidad - Lerma.
