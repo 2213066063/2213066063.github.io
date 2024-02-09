@@ -98,3 +98,8 @@ img.icon {
     font-family: 'cursive';
     z-index: 2;
 }
+.license-text {
+    font-size: 1px; /* Tamaño de fuente más pequeño para la licencia */
+}
+
+/* Añade cualquier estilo adicional que desees aquí */
